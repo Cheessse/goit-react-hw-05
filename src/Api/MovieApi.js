@@ -11,7 +11,7 @@ export const fetchTrendingMovies = async () => {
   };
 
   const response = await axios.get(
-    "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+    "https://api.themoviedb.org/3/trending/movie/day",
     {
       options,
     }
@@ -20,15 +20,18 @@ export const fetchTrendingMovies = async () => {
   return response;
 };
 
-export const fetchSearchMovie = async () => {
+export const fetchSearchMovie = async (query) => {
   const options = {
+    params: {
+      query,
+    },
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
     },
   };
 
   const response = await axios.get(
-    "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1",
+    "https://api.themoviedb.org/3/search/movie",
     {
       options,
     }
@@ -37,7 +40,7 @@ export const fetchSearchMovie = async () => {
   return response;
 };
 
-export const fetchMovieDetails = async () => {
+export const fetchMovieDetails = async (movieId) => {
   const options = {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
@@ -45,7 +48,7 @@ export const fetchMovieDetails = async () => {
   };
 
   const response = await axios.get(
-    "https://api.themoviedb.org/3/movie/movie_id?language=en-US",
+    `https://api.themoviedb.org/3/movie/${movieId}`,
     {
       options,
     }
@@ -54,7 +57,7 @@ export const fetchMovieDetails = async () => {
   return response;
 };
 
-export const fetchMovieCredits = async () => {
+export const fetchMovieCredits = async (movieId) => {
   const options = {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
@@ -62,7 +65,7 @@ export const fetchMovieCredits = async () => {
   };
 
   const response = await axios.get(
-    "https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US",
+    `https://api.themoviedb.org/3/movie/${movieId}/credits`,
     {
       options,
     }
@@ -71,7 +74,7 @@ export const fetchMovieCredits = async () => {
   return response;
 };
 
-export const fetchMovieReviews = async () => {
+export const fetchMovieReviews = async (movieId) => {
   const options = {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
@@ -79,7 +82,7 @@ export const fetchMovieReviews = async () => {
   };
 
   const response = await axios.get(
-    "https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
     {
       options,
     }
