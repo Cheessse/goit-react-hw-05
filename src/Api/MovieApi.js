@@ -12,12 +12,10 @@ export const fetchTrendingMovies = async () => {
 
   const response = await axios.get(
     "https://api.themoviedb.org/3/trending/movie/day",
-    {
-      options,
-    }
+    options
   );
 
-  return response;
+  return response.data.results;
 };
 
 export const fetchSearchMovie = async (query) => {
@@ -32,12 +30,11 @@ export const fetchSearchMovie = async (query) => {
 
   const response = await axios.get(
     "https://api.themoviedb.org/3/search/movie",
-    {
-      options,
-    }
+
+    options
   );
 
-  return response;
+  return response.data.results;
 };
 
 export const fetchMovieDetails = async (movieId) => {
@@ -49,12 +46,11 @@ export const fetchMovieDetails = async (movieId) => {
 
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}`,
-    {
-      options,
-    }
+
+    options
   );
 
-  return response;
+  return response.data;
 };
 
 export const fetchMovieCredits = async (movieId) => {
@@ -66,12 +62,11 @@ export const fetchMovieCredits = async (movieId) => {
 
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}/credits`,
-    {
-      options,
-    }
+
+    options
   );
 
-  return response;
+  return response.data.cast;
 };
 
 export const fetchMovieReviews = async (movieId) => {
@@ -83,10 +78,9 @@ export const fetchMovieReviews = async (movieId) => {
 
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
-    {
-      options,
-    }
+
+    options
   );
 
-  return response;
+  return response.data.results;
 };

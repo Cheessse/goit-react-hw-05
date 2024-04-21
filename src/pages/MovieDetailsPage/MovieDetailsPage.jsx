@@ -10,8 +10,6 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLinkRef = useRef(location.state?.from || "/");
 
-  console.log(backLinkRef);
-
   useEffect(() => {
     const detailsMovie = async () => {
       const details = await fetchMovieDetails(movieId);
@@ -23,8 +21,6 @@ const MovieDetails = () => {
   const formatScore = (score) => {
     return `${score}%`;
   };
-
-  console.log(location);
 
   return (
     <div>
